@@ -1,10 +1,12 @@
 import { Formik } from "formik"
 import { connect } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import MaskedInput from "react-text-mask";
+import moment from "moment"
 import { handleCreatePerson, handleUpdatePerson } from "../../store/actions/PeopleActions"
 import { Button } from "../Button/Button"
 import { CardForm, FieldForm, Title, Window } from "./Form.module"
-// import MaskedInput from "react-text-mask";
+import {maskCPF, maskData} from '../../utils/masked'
 
 const FormularioPeople = ({person, loading, isUpdate, dispacth}) => {
 
@@ -23,16 +25,23 @@ const FormularioPeople = ({person, loading, isUpdate, dispacth}) => {
             <Title>{isUpdate ? 'ATUALIZAR PESSOA' : 'CADASTRAR PESSOA'}</Title>
 
             <Formik
-            initialValues={{
-                nome: person ? person.nome : '',
-                dataNascimento: person ? person.dataNascimento : '',
-                cpf: person ? person.cpf : '',
-                email: person ? person.email : '',
-            }}
-            onSubmit={(values) => {
-                isUpdate ? handleUpdatePerson(values, person.idPessoa, navigate) 
-                : handleCreatePerson(values, navigate)
-            }}
+                initialValues={{
+                    nome: person ? person.nome : '',
+                    dataNascimento: person ? moment(person.dataNascimento, 'YYYY-MM-DD').format('DD/MM/YYYY') : '',
+                    cpf: person ? person.cpf : '',
+                    email: person ? person.email : '',
+                }}
+                onSubmit={(values) => {
+                    const newValues = {
+                        nome: values.nome,
+                        cpf: values.cpf.replaceAll('.', '').replace('-', ''),
+                        dataNascimento: moment(values.dataNascimento, 'DD/MM/YYYY').format('YYYY-MM-DD'),
+                        email: values.email
+                    }
+
+                    isUpdate ? handleUpdatePerson(newValues, person.idPessoa, navigate) 
+                    : handleCreatePerson(newValues, navigate)
+                }}
             >
                 {
                     props => (
@@ -53,11 +62,12 @@ const FormularioPeople = ({person, loading, isUpdate, dispacth}) => {
                                 <div>
                                     <label htmlFor="dataNascimento">Data</label>
                                 </div>
-                                <input
+                                <MaskedInput
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     value={props.values.dataNascimento}
                                     name='dataNascimento'
+                                    mask={maskData}
                                 />
                             </FieldForm>
 
@@ -65,11 +75,12 @@ const FormularioPeople = ({person, loading, isUpdate, dispacth}) => {
                                 <div>
                                     <label htmlFor="cpf">CPF</label>
                                 </div>
-                                <input
+                                <MaskedInput
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     value={props.values.cpf}
                                     name='cpf'
+                                    mask={maskCPF}
                                 />
                             </FieldForm>
 

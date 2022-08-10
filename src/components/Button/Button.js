@@ -8,5 +8,6 @@ export const Button = styled.button(({backgroundColor, width, height, borderRadi
     cursor: 'pointer',
     fontWeight: 'bold',
     height: height ? height : '25px',
+    marginBottom: '8px',
     width: width ? width : '150px',
 }));

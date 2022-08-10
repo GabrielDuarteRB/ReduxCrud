@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/login/Login";
 import People from "./pages/people/People";
 import PeopleForm from "./pages/people/PeopleForm";
+import PeopleAddress from "./pages/people/PeopleAddress";
 import { isAuth } from "./store/actions/AuthAction";
+import AddressForm from "./pages/Address/AddressForm";
 
 const Routers = ({auth, dispatch}) => {
 
@@ -25,6 +27,9 @@ const Routers = ({auth, dispatch}) => {
                         <Route path="/pessoa" element={<People/>}/>
                         <Route path="/atualizar-pessoa/:idPessoa" element={<PeopleForm/>}/>
                         <Route path="/criar-pessoa" element={<PeopleForm/>}/>
+                        <Route path="/endereco-pessoa/:idPessoa" element={<PeopleAddress/>}/>
+                        <Route path="/criar-endereco/:idPessoa/" element={<AddressForm/>}/>
+                        <Route path="/atualizar-endereco/:idPessoa/:idEndereco" element={<AddressForm/>}/>
                     </>
                     )
                     :

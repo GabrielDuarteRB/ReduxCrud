@@ -7,7 +7,7 @@ export const CardForm = styled.div`
     border-radius: 8px; 
     display: flex;
     flex-direction: column ;
-    height : 582px;
+    height : auto;
     justify-content: center ;
     padding: 24px 8px;
     width: 380px;
@@ -63,6 +63,19 @@ export const FieldForm = styled.div `
     }
     & svg {
         margin-left: -30px ;
+    }
+    & > select {
+        background: #FCFDFE;
+        border: 1px solid #F0F1F7;
+        border-radius: 8px;
+        height:42px ;
+        padding-left: 16px;
+        margin-bottom: 8px;
+        width: 316px ;
+        &::placeholder {
+            color: #4B506D;
+            opacity: 0.4;
+        }
     }
 `
 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { handleDeletePerson, navigateUpdatePerson } from "../../store/actions/PeopleActions"
 import { Itens, List } from "./List.module"
 import { FaTrashAlt, FaSyncAlt, FaAddressBook, FaHouseUser  } from "react-icons/fa";
+import { navigateAddress } from "../../store/actions/AddressAction";
 
 const ListPeople = ({people, dispatch}) => {
 
@@ -22,8 +23,8 @@ const ListPeople = ({people, dispatch}) => {
                 <Itens>{person.dataNascimento}</Itens>
                 <div>
                     <FaSyncAlt  onClick={() => navigateUpdatePerson(person.idPessoa ,navigate)}/>
-                    <FaAddressBook/>
-                    <FaHouseUser />
+                    <FaAddressBook/ >
+                    <FaHouseUser onClick={() => navigateAddress(navigate, dispatch, person.idPessoa)}/>
                     <FaTrashAlt  onClick={() => handleDeletePerson(person.idPessoa ,navigate, dispatch)}/>
                 </div>
             </List >
