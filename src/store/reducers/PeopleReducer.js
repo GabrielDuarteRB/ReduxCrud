@@ -6,14 +6,6 @@ const INITIAL_STATE = {
 }
 
 const peopleReducer = (state = INITIAL_STATE, action) => {
-    if(action.type === 'SET_PEOPLE') {
-        return {
-            ...state,
-            people: action.people,
-            loading: true,
-            isUpdate: false
-        } 
-    }
     if(action.type === 'SET_UPDATE') {
         return {
             ...state,
@@ -21,11 +13,26 @@ const peopleReducer = (state = INITIAL_STATE, action) => {
             isUpdate: true
         } 
     }
+    else if(action.type === 'SET_PEOPLE') {
+        return {
+            ...state,
+            loading: false,
+        } 
+    }
+    else if(action.type === 'GET_PEOPLE') {
+        return {
+            ...state,
+            people: action.people,
+            loading: true,
+            isUpdate: false
+        } 
+    }
     else if(action.type === 'UPDATE_PERSON') {
         return {
             ...state,
             person: action.person,
             loading: false,
+            isUpdate: true
         } 
     }
     else if(action.type === 'CREATE_PERSON') {

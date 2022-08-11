@@ -4,7 +4,7 @@ export const getPeople = async (dispatch) => {
     try {
         const {data} = await apiDbc.get('/pessoa?pagina=0&tamanhoDasPaginas=200')
         const people = {
-            type: 'SET_PEOPLE',
+            type: 'GET_PEOPLE',
             people: data.content,
         }
         dispatch(people)
@@ -13,11 +13,17 @@ export const getPeople = async (dispatch) => {
     }
 }
 
+export const setPeople = (dispatch) => {
+    const people = {
+        type: 'SET_PEOPLE',
+    }
+    dispatch(people)
+}
+
 export const handleCreatePerson = async (values, navigate) => {
     try {
         await apiDbc.post('/pessoa', values)
         navigate('/pessoa')
-        console.log('funcionou')
     } catch (error) {
         console.log(error)
     }
