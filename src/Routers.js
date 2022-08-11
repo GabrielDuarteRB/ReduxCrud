@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./pages/login/Login";
 import People from "./pages/people/People";
 import PeopleForm from "./pages/people/PeopleForm";
@@ -11,6 +11,7 @@ import PeopleContact from "./pages/people/PeopleContact";
 import ContactForm from "./pages/Contact/ContactForm";
 import Register from "./pages/register/Register";
 import NotFound from "./pages/notFound/NotFound";
+import Loading from "./components/Loading/Loading";
 
 const Routers = ({auth, dispatch}) => {
 
@@ -19,7 +20,9 @@ const Routers = ({auth, dispatch}) => {
   }, [])
 
   if(auth.isLoading && auth.isLogged) {
-    return(<h1>Loading</h1>)
+    return(
+      <Loading/>
+    )
   }
 
   return (
@@ -28,6 +31,7 @@ const Routers = ({auth, dispatch}) => {
             <Routes>
                 {auth.isLogged ? (
                     <>
+                        <Route path="/" element={<People/>}/>
                         <Route path="/pessoa" element={<People/>}/>
                         <Route path="/atualizar-pessoa/:idPessoa" element={<PeopleForm/>}/>
                         <Route path="/criar-pessoa" element={<PeopleForm/>}/>
