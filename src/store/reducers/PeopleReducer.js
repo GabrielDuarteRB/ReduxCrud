@@ -23,7 +23,7 @@ const peopleReducer = (state = INITIAL_STATE, action) => {
         return {
             ...state,
             people: action.people,
-            loading: true,
+            loading: false,
             isUpdate: false
         } 
     }

@@ -1,6 +1,7 @@
 import FormContact from "../../components/Formulario/FormContact"
 
 const ContactForm = () => {
+
   return (
     <FormContact/>
   )

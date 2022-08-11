@@ -4,19 +4,11 @@ import { connect } from "react-redux";
 import {Button} from '../Button/Button'
 import { deleteContact, navigateCreateContact, setContactToUpdate } from "../../store/actions/ContactAction";
 import { useNavigate, useParams } from "react-router-dom";
-import Loading from "../Loading/Loading";
-
-const ListContact = ({contact, isLoading, dispatch}) => {
+const ListContact = ({contact, dispatch}) => {
 
   const {idPessoa} = useParams()  
   const navigate = useNavigate()
 
-  if(isLoading){
-    return(
-        <Loading/>
-    )
-  }
-    
   return (
     <div>
         <Button 
@@ -47,7 +39,6 @@ const ListContact = ({contact, isLoading, dispatch}) => {
 
 const mapStateToProps = state => ({
     contact: state.contactReducer.contact,
-    isLoading: state.contactReducer.isLoading
 })
 
 export default connect(mapStateToProps)(ListContact)
