@@ -7,6 +7,8 @@ import { handleCreatePerson, handleUpdatePerson } from "../../store/actions/Peop
 import { Button } from "../Button/Button"
 import { CardForm, FieldForm, Title, Window } from "./Form.module"
 import {maskCPF, maskData} from '../../utils/masked'
+import Loading from "../Loading/Loading";
+import { ValidationPerson } from "../../utils/validationsForm";
 
 const FormularioPeople = ({person, loading, isUpdate, dispacth}) => {
 
@@ -14,7 +16,7 @@ const FormularioPeople = ({person, loading, isUpdate, dispacth}) => {
 
   if(loading) {
     return (
-        <div>Loading</div>
+        <Loading/>
     )
   }
 
@@ -42,6 +44,7 @@ const FormularioPeople = ({person, loading, isUpdate, dispacth}) => {
                     isUpdate ? handleUpdatePerson(newValues, person.idPessoa, navigate) 
                     : handleCreatePerson(newValues, navigate)
                 }}
+                validationSchema={ValidationPerson}
             >
                 {
                     props => (
