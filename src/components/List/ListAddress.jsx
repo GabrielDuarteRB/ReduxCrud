@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import {Button} from '../Button/Button'
 import { deleteAddress, navigateCreateAddress, navigateUploadAddress } from "../../store/actions/AddressAction";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
 
 const ListAddress = ({address, idPerson, dispatch}) => {
 

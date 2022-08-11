@@ -58,7 +58,6 @@ export const deleteAddress = async (dispatch, idPerson, idAddress, navigate) => 
     try {
         await apiDbc.delete(`/endereco/${idAddress}`)
         getAddress(dispatch, idPerson)
-        // navigate(`/endereco-pessoa/${idPerson}`)
     } catch (error) {
         console.log(error)
     }

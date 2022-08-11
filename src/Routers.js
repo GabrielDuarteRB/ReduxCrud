@@ -7,6 +7,8 @@ import PeopleForm from "./pages/people/PeopleForm";
 import PeopleAddress from "./pages/people/PeopleAddress";
 import { isAuth } from "./store/actions/AuthAction";
 import AddressForm from "./pages/Address/AddressForm";
+import PeopleContact from "./pages/people/PeopleContact";
+import ContactForm from "./pages/Contact/ContactForm";
 
 const Routers = ({auth, dispatch}) => {
 
@@ -30,6 +32,9 @@ const Routers = ({auth, dispatch}) => {
                         <Route path="/endereco-pessoa/:idPessoa" element={<PeopleAddress/>}/>
                         <Route path="/criar-endereco/:idPessoa/" element={<AddressForm/>}/>
                         <Route path="/atualizar-endereco/:idPessoa/:idEndereco" element={<AddressForm/>}/>
+                        <Route path="/contato-pessoa/:idPessoa" element={<PeopleContact/>}/>
+                        <Route path="/criar-contato/:idPessoa" element={<ContactForm/>}/>
+                        <Route path="/atualizar-contato/:idPessoa/:idContato" element={<ContactForm/>}/>
                     </>
                     )
                     :
