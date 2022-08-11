@@ -14,12 +14,18 @@ const peopleReducer = (state = INITIAL_STATE, action) => {
             isUpdate: false
         } 
     }
+    if(action.type === 'SET_UPDATE') {
+        return {
+            ...state,
+            loading: true,
+            isUpdate: true
+        } 
+    }
     else if(action.type === 'UPDATE_PERSON') {
         return {
             ...state,
             person: action.person,
             loading: false,
-            isUpdate: true
         } 
     }
     else if(action.type === 'CREATE_PERSON') {

@@ -28,7 +28,7 @@ const ListPeople = ({people, dispatch}) => {
                 <Itens>{person.email}</Itens>
                 <Itens>{person.dataNascimento}</Itens>
                 <div>
-                    <FaSyncAlt  onClick={() => navigateUpdatePerson(person.idPessoa ,navigate)}/>
+                    <FaSyncAlt  onClick={() => navigateUpdatePerson(dispatch, person.idPessoa ,navigate)}/>
                     <FaAddressBook onClick={() => navigateContactPerson(dispatch, person.idPessoa, navigate)} />
                     <FaHouseUser onClick={() => navigateAddress(navigate, dispatch, person.idPessoa)}/>
                     <FaTrashAlt  onClick={() => handleDeletePerson(person.idPessoa ,navigate, dispatch)}/>

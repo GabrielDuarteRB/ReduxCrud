@@ -54,8 +54,12 @@ export const handleDeletePerson = async (idPerson, navigate, dispatch) => {
     }
 }
 
-export const navigateUpdatePerson = (idPerson, navigate) => {
+export const navigateUpdatePerson = (dispatch, idPerson, navigate) => {
     navigate(`/atualizar-pessoa/${idPerson}`)
+    const setUpdate = {
+        type: 'SET_UPDATE'
+    }
+    dispatch(setUpdate)
 }
 
 export const navigateCreatePerson = (dispatch, navigate) => {
