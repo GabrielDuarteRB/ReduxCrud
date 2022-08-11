@@ -96,3 +96,7 @@ export const PasswordFieldTexts = styled.div `
     display: flex;
     justify-content: space-between ;
 `
+
+export const Blue = styled.span `
+    color: #3751FF;
+`

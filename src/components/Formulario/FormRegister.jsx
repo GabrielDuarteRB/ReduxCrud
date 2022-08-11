@@ -1,12 +1,12 @@
 import { useState } from "react"
-import { Blue, CardForm, FieldForm, PasswordFieldTexts, SmallText, SubTitle, Title, Window } from "./Form.module"
+import { Button } from "../Button/Button"
+import Logo from "../Logo/Logo"
+import { CardForm, FieldForm, PasswordFieldTexts, SmallText, SubTitle, Title, Window } from "./Form.module"
 import { FaEye } from "react-icons/fa";
-import Logo from "../Logo/Logo";
-import { Button } from "../Button/Button";
-import { Link } from "react-router-dom";
 
-const FormLogin = ({formik}) => {
+const FormRegister = ({formik}) => {
 
+  
   const [type, setType] = useState('password')
 
   const viewPassword = () => {
@@ -17,6 +17,7 @@ const FormLogin = ({formik}) => {
       setType('password')
   }
     
+
   return (
     <Window>
         <CardForm>
@@ -25,7 +26,7 @@ const FormLogin = ({formik}) => {
                 radius={'25%'}
             />
             <SubTitle>DashBoard Kit</SubTitle>
-            <Title>Log In to Dashboard Kit</Title>
+            <Title>Register to Dashboard Kit</Title>
             <SmallText>Enter your email and password below</SmallText>
 
             <form onSubmit={formik.handleSubmit}>
@@ -46,7 +47,6 @@ const FormLogin = ({formik}) => {
                 <FieldForm>
                     <PasswordFieldTexts>
                         <label htmlFor="senha">Senha</label>
-                        <SmallText small>Forgot Password</SmallText>
                     </PasswordFieldTexts>
                     <input
                         id="senha"
@@ -65,12 +65,11 @@ const FormLogin = ({formik}) => {
                     borderRadius='8px'
                     type='submit'
                 >
-                    Log In
+                    Register
                 </Button>
             </form>
-            <SmallText>Don't have an account? <Link to={'/cadastro'}><Blue>Sign up</Blue></Link></SmallText>
         </CardForm>
     </Window>
   )
 }
-export default FormLogin
+export default FormRegister

@@ -16,6 +16,16 @@ export const handleLogin = async (values, dispatch, navigate) => {
     }
 }
 
+export const handleRegister = async (values, navigate) => {
+    console.log(values)
+    try {
+        await apiDbc.post('/auth/create', values)
+        navigate('/')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const logOut = (dispatch, navigate) => {
     const logoff = {
         type: 'SET_LOGOUT',

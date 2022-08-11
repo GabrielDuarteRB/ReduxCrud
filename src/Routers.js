@@ -9,6 +9,8 @@ import { isAuth } from "./store/actions/AuthAction";
 import AddressForm from "./pages/Address/AddressForm";
 import PeopleContact from "./pages/people/PeopleContact";
 import ContactForm from "./pages/Contact/ContactForm";
+import Register from "./pages/register/Register";
+import NotFound from "./pages/notFound/NotFound";
 
 const Routers = ({auth, dispatch}) => {
 
@@ -41,10 +43,11 @@ const Routers = ({auth, dispatch}) => {
                     (
                     <>
                         <Route path="/" element={<Login/>}/>
+                        <Route path="/cadastro" element={<Register/>}/>
                     </>
                     )
                 }
-                {/* <Route path="*" element={NotFound/>}/> */}
+                <Route path="*" element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
     </div>
